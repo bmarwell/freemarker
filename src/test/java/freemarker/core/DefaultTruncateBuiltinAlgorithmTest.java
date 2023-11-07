@@ -666,4 +666,16 @@ public class DefaultTruncateBuiltinAlgorithmTest {
         }
     }
 
+    @Test
+    public void FREEMARKER219_truncate() throws TemplateException {
+        // given
+        String input = " 2 ";
+        Environment env = createEnvironment();
+
+        // when
+        TemplateScalarModel model = ASCII_INSTANCE.truncateC(input, 2, null, null, env);
+
+        // then
+        assertEquals("Should have truncated to length 2", 2, model.getAsString().length());
+    }
 }
